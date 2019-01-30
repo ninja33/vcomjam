@@ -17,8 +17,7 @@ def output_vcom_sqlite(cursor, path):
 
     cursor.execute('CREATE TABLE IF NOT EXISTS matchs(mid INTEGER NOT NULL, msn INTEGER, code INTEGER, listid INTEGER, listname INTEGER, datetime TEXT, PRIMARY KEY(mid))')
     cursor.execute('CREATE TABLE IF NOT EXISTS turns(tid INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, tsn INTEGER, mid INTEGER, word TEXT, pos TEXT, def TEXT, FOREIGN KEY(mid) REFERENCES matchs(mid))')
-    cursor.execute(
-        'CREATE TABLE IF NOT EXISTS users(uid TEXT NOT NULL, nickname TEXT NOT NULL, PRIMARY KEY(uid))')
+    cursor.execute('CREATE TABLE IF NOT EXISTS users(uid TEXT NOT NULL, nickname TEXT NOT NULL, PRIMARY KEY(uid))')
     cursor.execute('CREATE TABLE IF NOT EXISTS answers(aid INTEGER NOT NULL, uid TEXT, tid INTEGER, elapsed INTEGER, correct INTEGER, points INTEGER, PRIMARY KEY(aid), FOREIGN KEY(uid) REFERENCES users(uid), FOREIGN KEY(tid) REFERENCES turns(tid))')
 
     for line in load_vcomdata(path):
