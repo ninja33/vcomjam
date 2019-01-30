@@ -1,6 +1,6 @@
 ---
-title: vcom jam results
-layout: post
+title: vcom jam result
+layout: default
 ---
 
 ## Welcome to GitHub Pages
