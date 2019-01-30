@@ -4,7 +4,7 @@
 }
 
 .list-body {
-    height: 220px;
+    height: 250px;
     overflow: auto;
 }
 
@@ -30,14 +30,14 @@
 }
 
 .list-col-onoff, .list-col-cloud {
-    width: 30px;
+    width: 60px;
     text-align: center;
 }
 
 .list-col-name {
-    width: 50px;
+    width: 100px;
 }
 
 .list-col-description {
-    width: 180px;
+    width: 350px;
 }
