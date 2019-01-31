@@ -1,10 +1,10 @@
 .list-head {
     margin: 5px 0;
-    border-bottom: 1px solid #999;
+    border-bottom: 1px solid #666;
 }
 
 .list-body {
-    height: 250px;
+    height: 320px;
     overflow: auto;
 }
 
@@ -19,7 +19,8 @@
 .list-col {
     display: inline-block;
     vertical-align: text-bottom;
-    margin: 3px;
+    margin: 3px 0;
+    padding: 0 3px;
 }
 
 .list-col input[type=checkbox] {
@@ -29,15 +30,22 @@
     padding: 0;
 }
 
-.list-col-onoff, .list-col-cloud {
-    width: 60px;
-    text-align: center;
+.list-col-name, .list-col-word {
+    width: 120px;
 }
 
-.list-col-name {
-    width: 100px;
+.list-col-turn, .list-col-pos{
+    width: 40px;
 }
 
-.list-col-description {
-    width: 350px;
+.list-col-total {
+    width:60px
+}
+
+.list-col-turn, .list-col-total{
+    text-align: right;
+}
+
+.list-col-def {
+    width: 420px;
 }

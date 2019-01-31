@@ -4,27 +4,28 @@
 
 
 body {
-  font-family: "Segoe UI", Arial, "Microsoft Yahei", sans-serif;
-  font-size: 16px;
-  width: 800px;
-  border-radius: 8px;
+  background-color:#3d4045; 
 }
 
 .container {
-  margin: 0 auto;
+  font-family: "Segoe UI", Arial, "Microsoft Yahei", sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  min-width: 1280px;
+  margin: 20px 20px;;
 }
 
 .grouppanel {
   border-radius: 5px;
-  background-color: #f1f8e9;
-  margin: 5px 0;
+  background-color: #f5f5f5;
+  margin: 5px 0 20px;
   padding: 0 0 3px;
 }
 
 .grouptitle {
   font-weight: bold;
   color: white;
-  background-color: #93a085;
+  background-color: #69aa44;
   border-radius: 5px 5px 0 0;
   margin: 0 0 4px;
   padding: 4px 15px;
@@ -82,21 +83,6 @@ label {
 
 .col-3x {
   width: 600px;
-}
-
-.button {
-  text-align: center;
-  width: 95px;
-  background-color: #4CAF50;
-  color: white;
-  padding: 4px;
-  margin: 6px 3px 3px;
-  border: none;
-  cursor: pointer;
-}
-
-.button:hover {
-  background-color: #45a049;
 }
 
 hr {
