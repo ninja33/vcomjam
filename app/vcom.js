@@ -27,7 +27,10 @@ function renderMatchHTML(index, match) {
             </div>
             <div class="rightpanel">
                 <div class="list-head">
-                    <span class="list-col list-col-word">Word</span><span class="list-col list-col-pos">Pos.</span><span class="list-col list-col-def">Def.</span>
+                <span class="list-col list-col-pos">#</span><!--
+                --><span class="list-col list-col-word">Word</span><!--
+                --><span class="list-col list-col-pos">Pos.</span><!--
+                --><span class="list-col list-col-def">Def.</span>
                 </div>
                 <div class="listwrapper">
                     <div id="wordlistbody-${index}" class="list-body"></div>
@@ -65,26 +68,27 @@ function buildMatchs(results) {
 function populateDashboard(index, dashboard) {
     $('#dashboardbody-' + index).empty();
     sorted = Object.keys(dashboard).sort(function(x, y) { return dashboard[y].totalpoints - dashboard[x].totalpoints })
-    sorted.forEach(memberid => {
+    for (memberid of sorted) {
         let row = '';
         row += `<span class="list-col list-col-name">${dashboard[memberid].nickname}</span>`;
         for (const turnpoint of dashboard[memberid].turnpoints)
             row += `<span class="list-col list-col-turn">${turnpoint}</span>`;
         row += `<span class="list-col list-col-total">${dashboard[memberid].totalpoints}</span>`;
         $('#dashboardbody-' + index).append($(`<div class="list-row">${row}</div>`));
-    });
+    };
 
 }
 
 function populateWordlist(index, words) {
     $('#wordlistbody-' + index).empty();
-    words.forEach(word => {
+    for ([idx, word] of words.entries()){
         let row = '';
+        row += `<span class="list-col list-col-pos">${idx+1}</span>`;
         row += `<span class="list-col list-col-word">${word.word}</span>`;
         row += `<span class="list-col list-col-pos">${word.pos}</span>`;
         row += `<span class="list-col list-col-def">${word.def}</span>`;
         $('#wordlistbody-' + index).append($(`<div class="list-row">${row}</div>`));
-    });
+    };
 }
 
 function onReady() {
