@@ -44,7 +44,7 @@ body {
 }
 
 .leftpanel, .rightpanel {
-  padding: 0 6px;
+  padding: 0 10px;
   float: left;
   width: 50%;
 }

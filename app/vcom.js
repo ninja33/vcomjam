@@ -29,7 +29,7 @@ function renderMatchHTML(index, match) {
                 <div class="list-head">
                 <div class="list-col list-col-pos">#</div><!--
                 --><div class="list-col list-col-word">Word</div><!--
-                --><div class="list-col list-col-pos">P</div><!--
+                --><div class="list-col list-col-pos">…</div><!--
                 --><div class="list-col list-col-def">Definition</div>
                 </div>
                 <div class="listwrapper">
