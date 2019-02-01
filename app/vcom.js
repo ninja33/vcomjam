@@ -1,10 +1,10 @@
 function renderMatchHTML(index, match) {
-    let options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+    let options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return `
         <div class="grouppanel">
             <div class="grouptitle">
-                <span>${match.time.toLocaleDateString('zh-CN', options)} | ${match.title}</span>
-                <span class="extend"><a href="#">…</a></span>
+                <div class="extend"><a href="#">Word List …</a></div>
+                <div class="titletext">${match.time.toLocaleDateString('en-US', options)} | ${match.title}</div>
             </div>
             <div class="leftpanel">
                 <div class="list-head">
@@ -29,8 +29,8 @@ function renderMatchHTML(index, match) {
                 <div class="list-head">
                 <div class="list-col list-col-pos">#</div><!--
                 --><div class="list-col list-col-word">Word</div><!--
-                --><div class="list-col list-col-pos">Pos.</div><!--
-                --><div class="list-col list-col-def">Def.</div>
+                --><div class="list-col list-col-pos">P</div><!--
+                --><div class="list-col list-col-def">Definition</div>
                 </div>
                 <div class="listwrapper">
                     <div id="wordlistbody-${index}" class="list-body"></div>
