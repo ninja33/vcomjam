@@ -11,8 +11,8 @@ body {
   font-family: "Segoe UI", Arial, "Microsoft Yahei", sans-serif;
   font-size: 14px;
   border-radius: 8px;
-  min-width: 1280px;
-  margin: 20px 20px;;
+  width: 1200px;
+  margin: 20px auto;;
 }
 
 .grouppanel {
@@ -54,14 +54,13 @@ a {
   text-decoration: none;
 }
 
-.option-helps {
+.extend {
   float: right;
 }
 
-.option-helps a {
-  color: white;
+.extend a{
+  color:white;
 }
-
 label, input, select {
   width: 150px;
   padding: 4px;
@@ -87,7 +86,7 @@ label {
 
 hr {
   border: 1px;
-  margin: 4px 5px;
+  margin: 1px 0;
   border-top: 1px solid #e5e5e5;
 }
 
@@ -103,4 +102,12 @@ a.tabmenu {
 
 .hidden {
   display: none;
+}
+
+.width-600px{
+  width: 600px;
+}
+
+.width-100pc{
+  width: 100%;
 }

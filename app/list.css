@@ -1,19 +1,27 @@
 .list-head {
-    margin: 5px 0;
+    margin: 0 2px;
     border-bottom: 1px solid #666;
 }
 
 .list-body {
-    height: 320px;
+    height: 340px;
     overflow: auto;
 }
 
-.list-row {
-    margin: 5px 0;
+.list-member-row, .list-word-row {
+    border: 2px solid #f5f5f5;
+    margin: 2px 0;
 }
 
-.list-row+.list-row {
-    border-top: 1px solid #e5e5e5;
+.highlight {
+    border: 2px solid #FF9800;
+    border-radius: 5px;
+}
+
+.wrongword{
+    background-color: #FF9800;
+    border-radius: 3px;
+    color: white;
 }
 
 .list-col {
@@ -30,22 +38,36 @@
     padding: 0;
 }
 
-.list-col-name, .list-col-word {
-    width: 120px;
+.list-col-word {
+    width: 100px;
+    margin-right:10px;
+    padding: 0 5px;
 }
 
-.list-col-turn, .list-col-pos{
+.list-col-name {
+    width: 100px;
+}
+
+.list-col-pos {
+    width: 30px;
+}
+
+.list-col-turn {
     width: 40px;
 }
 
 .list-col-total {
-    width:60px
+    width: 60px;
 }
 
-.list-col-turn, .list-col-total{
+.list-col-turn,
+.list-col-total {
     text-align: right;
 }
 
 .list-col-def {
-    width: 420px;
+    width: 390px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;    
 }
