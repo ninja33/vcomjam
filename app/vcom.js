@@ -118,6 +118,7 @@ function onReady() {
         };
         $(".list-member-row").hover(onMouseover);
         $(".extend").click(onClickextend);
+        onClickextend();
     });
 }
 
