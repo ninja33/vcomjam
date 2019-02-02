@@ -67,6 +67,9 @@
 
 .list-col-def {
     width: 390px;
+}
+
+.list-col-name, .list-col-def{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;    
