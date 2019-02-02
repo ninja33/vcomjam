@@ -47,6 +47,7 @@ function buildMatchs(results) {
         let dashboard = {};
         let words = [];
         for (const member of result.members) {
+            if (member.turn < 0) continue;
             dashboard[member.mid] = { nickname: member.nickname.replace("Anonymous","(A)"), totalpoints: member.points, turnpoints: [] };
         }
         for (const [index, turn] of result.turns.entries()) {
