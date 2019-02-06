@@ -8,27 +8,34 @@ body {
 }
 
 .container {
-  font-family: "Segoe UI", Arial, "Microsoft Yahei", sans-serif;
-  font-size: 14px;
+  font-family: Arial, "Microsoft Yahei", sans-serif;
+  font-size: 18px;
   border-radius: 8px;
-  width: 1200px;
-  margin: 20px auto;;
+  width: 800px;
+  margin: 20px auto;
+}
+
+.menuitem {
+    padding: 2px 8px;
 }
 
 .grouppanel {
   border-radius: 8px;
   background-color: white;
-  margin: 5px 0 20px;
-  padding: 0 0 3px;
+  margin: 1px 0;
+  /* padding: 0 0 3px; */
 }
 
+.grouppanel+.grouppanel{
+  margin-top: 4px;
+}
 .grouptitle {
   font-weight: bold;
   color: white;
   background-color: #69aa44;
   border-radius: 8px 8px 0 0;
-  margin: 0 0 4px;
-  padding: 8px 10px;
+  /* margin: 0 0 4px; */
+  padding: 8px;
 }
 
 .titletext{
@@ -39,22 +46,42 @@ body {
 }
 
 .crosspanel {
-  padding: 0 5px;
+  padding: 5px;
+  /* margin: 5px 0; */
   width: 100%;
 }
 
 .leftpanel, .rightpanel {
-  padding: 0 10px;
+  padding: 0 2px;
   float: left;
   width: 50%;
 }
 
 .leftpanel {
-  border-right: 1px solid #d5d5d5;
+  /* border-right: 1px solid #d5d5d5; */
+}
+
+.middlepanel{
+  padding: 2px 1px;
+  float: left;
+  width: 33%;
+}
+
+.middlepanel+.middlepanel {
+    margin-left: 4px;
 }
 
 .clearfix {
   clear: both;
+}
+
+label, input[type="text"]{
+  display:inline-block;
+  font-size: 18px;
+  width: 120px;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0 5px;
 }
 
 a {
@@ -89,10 +116,6 @@ a.tabmenu {
   display: none;
 }
 
-.width-600px{
-  width: 600px;
-}
-
-.width-100pc{
-  width: 100%;
+img.icon{
+  vertical-align:middle;
 }

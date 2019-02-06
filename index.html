@@ -1,21 +1,88 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="app/tabs.css">
-    <link rel="stylesheet" href="app/list.css">
-    <link rel="stylesheet" href="app/vcom.css">
-    <link href="app/favicon-16x16.png" sizes="32x32" rel="icon" type="image/png">    
-    <link href="app/favicon-16x16.png" sizes="16x16" rel="icon" type="image/png">    
-    <title>Daily Vocabulary.com Jam Result</title>
-</head>
-
-<body>
-    <div id="jamresults" class='container'>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="app/tabs.js"></script>
-    <script src="app/vcom.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/tabs.css">
+        <link rel="stylesheet" href="css/list.css">
+        <link rel="stylesheet" href="css/vcom.css">
+        <link rel="stylesheet" href="lib/flatpickr/flatpickr.material_green.css">
+        <link href="img/favicon-16x16.png" sizes="32x32" rel="icon" type="image/png">
+        <link href="img/favicon-16x16.png" sizes="16x16" rel="icon" type="image/png">
+        <title>Daily Vocabulary.com Jam Result</title>
+    </head>
+    <body>
+        <div class="container">
+            <div id='menu'>
+                <div class="grouppanel">
+                    <div class="grouptitle">
+                        <div class="titletext">Vocabulary.com 单词赛</div>
+                    </div>
+                    <div class="middlepanel">
+                        <div class="menuitem">
+                            <div class="list-col list-col-icon">
+                                <img class="icon" src="img/sport.png">
+                            </div>
+                            <div class="list-col">显示比赛</div><input type="text" id="jamdate">
+                        </div>
+                    </div>
+                    <div class="middlepanel">
+                        <div class="menuitem">
+                            <div class="list-col list-col-icon">
+                                <img class="icon" src="img/save.png">
+                            </div>
+                            <div class="list-col">保存数据</div>
+                        </div>
+                    </div>
+                    <div class="middlepanel">
+                        <div class="menuitem">
+                            <div class="list-col list-col-icon">
+                                <img class="icon" src="img/rules.png">
+                            </div>
+                            <div class="list-col">比赛规则</div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div id='ladder'>
+                <div class="middlepanel">
+                    <div class="grouppanel">
+                        <div class="grouptitle">
+                            <div class="titletext">当日夺冠排名</div>
+                        </div>
+                        <div id="matchesrank" class="crosspanel">
+                        </div>
+                    </div>
+                </div>
+                <div class="middlepanel">
+                    <div class="grouppanel">
+                        <div class="grouptitle">
+                            <div class="titletext">当日总分排名</div>
+                        </div>
+                        <div id="pointsrank" class="crosspanel">
+                        </div>
+                    </div>
+                </div>
+                <div class="middlepanel">
+                    <div class="grouppanel">
+                        <div class="grouptitle">
+                            <div class="titletext">正确题数排名</div>
+                        </div>
+                        <div id="answersrank" class="crosspanel">
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="matches"></div>
+        </div>
+        <script src="lib/jquery-3.2.1.min.js"></script>
+        <script src="lib/flatpickr/flatpickr.js"></script>
+        <script src="lib/flatpickr/zh.js"></script>
+        <script src="lib/jquery.couch.js"></script>
+        <script src="js/util.js"></script>
+        <script src="js/data.js"></script>
+        <script src="js/tabs.js"></script>
+        <script src="js/vcom.js"></script>
+    </body>
 </html>
