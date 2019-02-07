@@ -12,74 +12,16 @@
     </head>
     <body>
         <div class="container">
-            <div id='menu'>
-                <div class="grouppanel">
-                    <div class="grouptitle">
-                        <div class="titletext">Vocabulary.com 单词赛</div>
-                    </div>
-                    <div class="middlepanel">
-                        <div class="menuitem">
-                            <div class="list-col list-col-icon">
-                                <img class="icon" src="img/sport.png">
-                            </div>
-                            <div class="list-col">显示比赛</div><input type="text" id="jamdate">
-                        </div>
-                    </div>
-                    <div class="middlepanel">
-                        <div class="menuitem">
-                            <div class="list-col list-col-icon">
-                                <img class="icon" src="img/save.png">
-                            </div>
-                            <div class="list-col">保存数据</div>
-                        </div>
-                    </div>
-                    <div class="middlepanel">
-                        <div class="menuitem">
-                            <div class="list-col list-col-icon">
-                                <img class="icon" src="img/rules.png">
-                            </div>
-                            <div class="list-col">比赛规则</div>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-            <div id='ladder'>
-                <div class="middlepanel">
-                    <div class="grouppanel">
-                        <div class="grouptitle">
-                            <div class="titletext">当日夺冠排名</div>
-                        </div>
-                        <div id="matchesrank" class="crosspanel">
-                        </div>
-                    </div>
-                </div>
-                <div class="middlepanel">
-                    <div class="grouppanel">
-                        <div class="grouptitle">
-                            <div class="titletext">当日总分排名</div>
-                        </div>
-                        <div id="pointsrank" class="crosspanel">
-                        </div>
-                    </div>
-                </div>
-                <div class="middlepanel">
-                    <div class="grouppanel">
-                        <div class="grouptitle">
-                            <div class="titletext">正确题数排名</div>
-                        </div>
-                        <div id="answersrank" class="crosspanel">
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            <div id='menu'></div>
+            <div id='ladder'></div>
             <div id="matches"></div>
         </div>
         <script src="js/lib/jquery-3.2.1.min.js"></script>
+        <script src="js/lib/handlebars.runtime-v4.0.12.js"></script>
         <script src="js/lib/flatpickr/flatpickr.js"></script>
         <script src="js/lib/flatpickr/zh.js"></script>
         <script src="js/lib/jquery.couch.js"></script>
+        <script src="js/template.js"></script>
         <script src="js/util.js"></script>
         <script src="js/data.js"></script>
         <script src="js/tabs.js"></script>

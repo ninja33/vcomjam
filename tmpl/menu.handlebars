@@ -1,0 +1,16 @@
+<div class="grouppanel">
+    <div class="grouptitle">
+        <div class="titletext">{{title}}Vocabulary.com 单词赛</div>
+    </div>
+    {{#each menus}}
+    <div class="middlepanel">
+        <div class="menuitem">
+            <div class="list-col list-col-icon">
+                <img class="icon" src="img/{{image}}.png">
+            </div>
+            <div class="list-col">{{title}}</div>{{#if input}}<input type="text" id="jamdate">{{/if}}
+        </div>
+    </div>
+    {{/each}}
+    <div class="clearfix"></div>
+</div>

@@ -1,103 +1,24 @@
-function renderMatchHTML(index, match) {
-    return `
-        <div class="grouppanel">
-            <div class="grouptitle">
-                <div class="extend" data-index="${index}"><a href="javascript:void(0)" >Word List …</a></div>
-                <div class="titletext">Title: ${match.title}</div>
-            </div>
-            <div id="dashboard" class="crosspanel">
-                <div class="list-head">
-                    <div class="list-col list-col-name">Member</div><!--
-                    --><div class="list-col list-col-turn">1</div><!--
-                    --><div class="list-col list-col-turn">2</div><!--
-                    --><div class="list-col list-col-turn">3</div><!--
-                    --><div class="list-col list-col-turn">4</div><!--
-                    --><div class="list-col list-col-turn">5</div><!--
-                    --><div class="list-col list-col-turn">6</div><!--
-                    --><div class="list-col list-col-turn">7</div><!--
-                    --><div class="list-col list-col-turn">8</div><!--
-                    --><div class="list-col list-col-turn">9</div><!--
-                    --><div class="list-col list-col-turn">10</div><!--
-                    --><div class="list-col list-col-total">Total</div>
-            </div>
-                <div class="listwrapper">
-                    <div id="dashboardbody-${index}" class="list-body"></div>
-                </div>
-            </div>
-            <div id="wordlist-${index}" class="crosspanel hidden">
-                <div class="list-head">
-                <div class="list-col list-col-pos">#</div><!--
-                --><div class="list-col list-col-word">Word</div><!--
-                --><div class="list-col list-col-pos">…</div><!--
-                --><div class="list-col list-col-def">Definition</div>
-                </div>
-                <div class="listwrapper">
-                    <div id="wordlistbody-${index}" class="list-body"></div>
-                </div>
-            </div>
-            <div class="clearfix"></div>    
-        </div>
-    `
-}
-
-function populateRanks(ranks, name) {
-    $(`#${name}`).empty();
-    let row = '';
-    ranks = ranks.slice(0, 3);
-    if (ranks.length < 3){
-        let j = ranks.length;
-        for (i = 0; i < 3 - j; i++)
-            ranks.push({ name: "", number: "" });
-    }
-
-    for (const [index, rank] of ranks.entries())
-        row += `
-            <div class="list-row">
-                <div class="list-col list-col-icon"><img class="icon" src="img/medal-${index}.png"></div>
-                <div class="list-col list-col-name">${rank.name}</div>
-                <div class="list-col list-col-turn">${rank.number}</div>
-            </div>
-            <hr>`
-    $(`#${name}`).append(row);
-
-}
-
-function populateDashboard(index, dashboard) {
-    $('#dashboardbody-' + index).empty();
-    sorted = Object.keys(dashboard).sort(function(x, y) {
-        return dashboard[y].totalpoints - dashboard[x].totalpoints
-    })
-    for (const memberid of sorted) {
-        let row = '';
-        row += `<div class="list-col list-col-name">${dashboard[memberid].nickname}</div>`;
-        for (const turnpoint of dashboard[memberid].turnpoints)
-            row += `<div class="list-col list-col-turn">${turnpoint}</div>`;
-        row += `<div class="list-col list-col-total">${dashboard[memberid].totalpoints}</div>`;
-        $('#dashboardbody-' + index).append(`<div class="list-row-member" data-index="${index}" data-memberid="${memberid}">${row}</div><hr>`);
+function showMenu() {
+    const menucontext = {
+        title: "Vocabulary.com 单词争霸赛赛",
+        menus: [
+            { title: "显示比赛", image: "sport", input: true },
+            { title: "保存数据", image: "save" },
+            { title: "比赛规则", image: "rules" }
+        ]
     };
-
+    $("#menu").html(Handlebars.templates.menu(menucontext));
 }
 
-function populateWordlist(index, words) {
-    $('#wordlistbody-' + index).empty();
-    for ([idx, word] of words.entries()) {
-        let row = '';
-        row += `<div class="list-col list-col-pos">${idx + 1}</div>`;
-        row += `<div class="list-col list-col-word">${word.word}</div>`;
-        row += `<div class="list-col list-col-pos">${word.pos}</div>`;
-        row += `<div class="list-col list-col-def">${word.def}</div>`;
-        $('#wordlistbody-' + index).append(`<div id="m${index}-w${idx}" class="list-row-word">${row}</div><hr>`);
+function showLadder(matches) {
+    const laddercontext = {
+        ladders: [
+            { title: "当日夺冠排名", id: "matchesrank", rank: uptoThree(getMatchesRank(matches)) },
+            { title: "当日总分排名", id: "pointsrank", rank: uptoThree(getPointsRank(matches)) },
+            { title: "正确题数排名", id: "answersrank", rank: uptoThree(getAnswersRank(matches)) }
+        ]
     };
-}
-
-function mergeObject(x, y) {
-    for (const key in y) {
-        if (x.hasOwnProperty(key))
-            x[key] = x[key] + y[key];
-        else
-            x[key] = y[key];
-    }
-    return x;
+    $("#ladder").html(Handlebars.templates.ladder(laddercontext));
 }
 
 function getMatchesRank(matches) {
@@ -137,18 +58,26 @@ function getAnswersRank(matches) {
     return Object.keys(ranks).sort((x, y) => ranks[y] - ranks[x]).map(x => { return { "name": x, "number": ranks[x] } });
 }
 
-function populateMatches(matches) {
-    populateRanks(getMatchesRank(matches), "matchesrank");
-    populateRanks(getPointsRank(matches), "pointsrank");
-    populateRanks(getAnswersRank(matches), "answersrank");
+function sortDashboard(dashboard) {
+    let sorted = Object.keys(dashboard).sort(function(x, y) {
+        return dashboard[y].totalpoints - dashboard[x].totalpoints
+    })
+    let sorteddashboard = [];
+    for (const memberid of sorted) {
+        let member = dashboard[memberid];
+        sorteddashboard.push({ memberid, nickname: member.nickname, turnpoints: member.turnpoints, totalpoints: member.totalpoints });
+    };
+    return sorteddashboard;
 
-    $('#matches').empty()
-    for ([index, match] of matches.entries()) {
-        $('#matches').append(renderMatchHTML(index, match))
-        populateDashboard(index, match.dashboard);
-        populateWordlist(index, match.words);
+}
+
+function populateMatches(matches) {
+    showLadder(matches);
+    for (let match of matches) {
+        match.sorted = sortDashboard(match.dashboard);
     };
 
+    $('#matches').html(Handlebars.templates.matches({ matches }));
     $(".list-row-member").hover(onMouseover);
     $(".extend").click(onClickextend);
 }
@@ -183,19 +112,20 @@ function onDateChange(datelist) {
 }
 
 async function onReady() {
+    showMenu();
     vcommatches = await vcomdata.loadJSONfile();
     //vcommatches = await vcomdata.loadDatabase();
     let event = vcommatches.map(match => match.datetime);
-    initialdate = new Date(Math.max(...event));
+    let initialdate = (new Date(Math.max(...event))).toISOString().slice(0, 10);
     options = {
         locale: "zh",
         enable: event,
-        defaultDate: initialdate.toISOString().slice(0, 10),
+        defaultDate: initialdate,
         onChange: onDateChange
     }
     const fp = flatpickr("#jamdate", options);
-    $("#jamdate").val(initialdate.toISOString().slice(0, 10));
-    onDateChange([initialdate])
+    $("#jamdate").val(initialdate);
+    onDateChange([new Date(initialdate)])
 };
 
 var vcommatches = [];
