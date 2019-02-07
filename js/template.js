@@ -98,7 +98,7 @@ templates['menu'] = template({"1":function(container,depth0,helpers,partials,dat
 
   return "<div class=\"grouppanel\">\r\n    <div class=\"grouptitle\">\r\n        <div class=\"titletext\">"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "Vocabulary.com 单词赛</div>\r\n    </div>\r\n"
+    + "</div>\r\n    </div>\r\n"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.menus : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "    <div class=\"clearfix\"></div>\r\n</div>\r\n";
 },"useData":true});
