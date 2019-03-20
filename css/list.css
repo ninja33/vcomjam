@@ -53,6 +53,13 @@
     width: 40px;
 }
 
+.list-col-turns {
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+    width: 500px;
+}
+
 .list-col-turn {
     width: 50px;
 }

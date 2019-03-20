@@ -6,28 +6,26 @@
     </div>
     <div id="dashboard" class="crosspanel">
         <div class="list-head">
-            <div class="list-col list-col-name">Member</div>
-            <div class="list-col list-col-turn">1</div>
-            <div class="list-col list-col-turn">2</div>
-            <div class="list-col list-col-turn">3</div>
-            <div class="list-col list-col-turn">4</div>
-            <div class="list-col list-col-turn">5</div>
-            <div class="list-col list-col-turn">6</div>
-            <div class="list-col list-col-turn">7</div>
-            <div class="list-col list-col-turn">8</div>
-            <div class="list-col list-col-turn">9</div>
-            <div class="list-col list-col-turn">10</div>
-            <div class="list-col list-col-total">Total</div>
+            <div class="list-col list-col-name">Member</div><!--
+            --><div class="list-col list-col-turn">1</div><!--
+            --><div class="list-col list-col-turn">2</div><!--
+            --><div class="list-col list-col-turn">3</div><!--
+            --><div class="list-col list-col-turn">4</div><!--
+            --><div class="list-col list-col-turn">5</div><!--
+            --><div class="list-col list-col-turn">6</div><!--
+            --><div class="list-col list-col-turn">7</div><!--
+            --><div class="list-col list-col-turn">8</div><!--
+            --><div class="list-col list-col-turn">9</div><!--
+            --><div class="list-col list-col-turn">10</div><!--
+            --><div class="list-col list-col-total">Total</div>
     </div>
         <div class="listwrapper">
             <div id="dashboardbody-{{@index}}" class="list-body">
                 {{#each sorted}}
                 <div class="list-row-member" data-index="{{@../index}}" data-memberid="{{memberid}}">
-                    <div class="list-col list-col-name">{{nickname}}</div>
-                    {{#each turnpoints}}
-                    <div class="list-col list-col-turn">{{this}}</div>
-                    {{/each}}
-                    <div class="list-col list-col-total">{{totalpoints}}</div>
+                    <div class="list-col list-col-name">{{nickname}}</div><div class="list-col list-col-turns">
+                    {{#each turnpoints}}<div class="list-col list-col-turn">{{this}}</div>{{/each}}
+                    </div><div class="list-col list-col-total">{{totalpoints}}</div>
                 </div><hr>
                 {{/each}}
             </div>
