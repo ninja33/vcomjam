@@ -113,8 +113,14 @@ function onDateChange(datelist) {
 
 async function onReady() {
     showMenu();
-    vcommatches = await vcomdata.loadJSONfile();
-    //vcommatches = await vcomdata.loadDatabase();
+
+    let url = new URL(window.location.href);
+    let num = url.searchParams.get('number');
+    if (!num) return;
+
+    vcommatches = await vcomdata.loadVcomJams(num.split());
+    if (!vcommatches || vcommatches.length == 0) return;
+
     let event = vcommatches.map(match => match.datetime);
     let initialdate = (new Date(Math.max(...event))).toISOString().slice(0, 10);
     options = {
