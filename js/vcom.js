@@ -118,7 +118,7 @@ async function onReady() {
     let num = url.searchParams.get('number');
     if (!num) return;
 
-    vcommatches = await vcomdata.loadVcomJams(num.split());
+    vcommatches = await vcomdata.loadVcomJams(num.split(','));
     if (!vcommatches || vcommatches.length == 0) return;
 
     let event = vcommatches.map(match => match.datetime);
