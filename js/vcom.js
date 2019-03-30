@@ -1,21 +1,9 @@
-function showMenu() {
-    const menucontext = {
-        title: "Vocabulary.com 单词争霸赛赛",
-        menus: [
-            { title: "显示比赛", image: "sport", input: true },
-            { title: "保存数据", image: "save" },
-            { title: "比赛规则", image: "rules" }
-        ]
-    };
-    $("#menu").html(Handlebars.templates.menu(menucontext));
-}
-
 function showLadder(matches) {
     const laddercontext = {
         ladders: [
-            { title: "当日夺冠排名", id: "matchesrank", rank: uptoThree(getMatchesRank(matches)) },
-            { title: "当日总分排名", id: "pointsrank", rank: uptoThree(getPointsRank(matches)) },
-            { title: "正确题数排名", id: "answersrank", rank: uptoThree(getAnswersRank(matches)) }
+            { title: "Rank Top 3", id: "matchesrank", rank: uptoThree(getMatchesRank(matches)) },
+            { title: "Total Points", id: "pointsrank", rank: uptoThree(getPointsRank(matches)) },
+            { title: "Correct Answers", id: "answersrank", rank: uptoThree(getAnswersRank(matches)) }
         ]
     };
     $("#ladder").html(Handlebars.templates.ladder(laddercontext));
@@ -107,12 +95,44 @@ function onClickextend(e) {
 function onDateChange(datelist) {
     for (const day of datelist) {
         matches = vcommatches.filter(match => isSameDay(match.datetime, day));
-        populateMatches(matches)
+        populateMatches(matches);
     }
 }
 
+function onShowResults() {
+    window.location.href = 'index.html?number=' + $('#jamnumber').val();
+}
+
+function onCopyAnswers() {
+    function copyToClipboard(text) {
+        let textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+      
+        try {
+          let successful = document.execCommand('copy');
+          let msg = successful ? 'successful' : 'unsuccessful';
+          alert('Notice: Copying answers to clipboard was ' + msg);
+        } catch (err) {
+          alert('Notice: Oops, unable to copy', err);
+        }
+        document.body.removeChild(textArea);
+    }
+    let list = '';
+    document.querySelectorAll('[id^="wordlistbody"] .list-row-word').forEach(x=>{
+        list += x.querySelectorAll('.list-col-pos')[0].innerText + '\t';
+        list += x.querySelector('.list-col-word').innerText + '\t';
+        list += x.querySelectorAll('.list-col-pos')[1].innerText + '\t';
+        list += x.querySelector('.list-col-def').innerText + '\n';
+    });
+    copyToClipboard(list); 
+}
+
 async function onReady() {
-    showMenu();
+    $('#showresults').click(onShowResults);
+    $('#copyanswers').click(onCopyAnswers);
 
     let url = new URL(window.location.href);
     let num = url.searchParams.get('number');
@@ -121,17 +141,10 @@ async function onReady() {
     vcommatches = await vcomdata.loadVcomJams(num.split(','));
     if (!vcommatches || vcommatches.length == 0) return;
 
-    let event = vcommatches.map(match => match.datetime);
-    let initialdate = (new Date(Math.max(...event))).toISOString().slice(0, 10);
-    options = {
-        locale: "zh",
-        enable: event,
-        defaultDate: initialdate,
-        onChange: onDateChange
-    }
-    const fp = flatpickr("#jamdate", options);
-    $("#jamdate").val(initialdate);
-    onDateChange([new Date(initialdate)])
+    $("#jamnumber").val(num);
+    matches = vcommatches;
+    populateMatches(matches);
+
 };
 
 var vcommatches = [];

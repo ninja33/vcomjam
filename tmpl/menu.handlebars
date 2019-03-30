@@ -5,10 +5,10 @@
     {{#each menus}}
     <div class="middlepanel">
         <div class="menuitem">
-            <div class="list-col list-col-icon">
-                <img class="icon" src="img/{{image}}.png">
-            </div>
-            <div class="list-col">{{title}}</div>{{#if input}}<input type="text" id="jamdate">{{/if}}
+            <!--
+            <div class="list-col list-col-icon"><img class="icon" src="img/{{image}}.png"></div>
+            -->
+            {{#if input}}<input type="text" id="jamdate">{{/if}}<div class="list-col"><label class="button" id="{{id}}">{{title}}</label></div>
         </div>
     </div>
     {{/each}}
