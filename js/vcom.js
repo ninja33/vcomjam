@@ -99,6 +99,13 @@ function onDateChange(datelist) {
     }
 }
 
+function onEnterNumber(e) {
+    if (e.which == 13) {
+        $('#showresults').click();
+        e.preventDefault();
+    }
+}
+
 function onShowResults() {
     window.location.href = 'index.html?number=' + $('#jamnumber').val();
 }
@@ -110,27 +117,28 @@ function onCopyAnswers() {
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
-      
+
         try {
-          let successful = document.execCommand('copy');
-          let msg = successful ? 'successful' : 'unsuccessful';
-          alert('Notice: Copying answers to clipboard was ' + msg);
+            let successful = document.execCommand('copy');
+            let msg = successful ? 'successful' : 'unsuccessful';
+            alert('Notice: Copying answers to clipboard was ' + msg);
         } catch (err) {
-          alert('Notice: Oops, unable to copy', err);
+            alert('Notice: Oops, unable to copy', err);
         }
         document.body.removeChild(textArea);
     }
     let list = '';
-    document.querySelectorAll('[id^="wordlistbody"] .list-row-word').forEach(x=>{
+    document.querySelectorAll('[id^="wordlistbody"] .list-row-word').forEach(x => {
         list += x.querySelectorAll('.list-col-pos')[0].innerText + '\t';
         list += x.querySelector('.list-col-word').innerText + '\t';
         list += x.querySelectorAll('.list-col-pos')[1].innerText + '\t';
         list += x.querySelector('.list-col-def').innerText + '\n';
     });
-    copyToClipboard(list); 
+    copyToClipboard(list);
 }
 
 async function onReady() {
+    $('#jamnumber').keyup(onEnterNumber);
     $('#showresults').click(onShowResults);
     $('#copyanswers').click(onCopyAnswers);
 
